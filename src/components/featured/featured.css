@@ -1,0 +1,42 @@
+.featured {
+  display: flex;
+  justify-content: center;
+  z-index: 1;
+}
+
+.featuredContainer {
+  width: 100%;
+  max-width: 1030px;
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  margin: 5rem 0rem;
+}
+
+.featuredItem {
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+  color: white;
+  height: 14rem;
+}
+
+.featuredTitles {
+  position: absolute;
+  bottom: 1rem;
+  left: 6%;
+  width: 100%;
+}
+
+.featuredImage {
+  width: 100%;
+  object-fit: cover;
+}
+
+.featuredTitles > h2 {
+  font-size: 1.2rem;
+}
+
+.featuredTitles > h3 {
+  font-size: 1rem;
+}
