@@ -36,19 +36,27 @@
 }
 
 .navbarButton {
-  padding: 0.4rem 0.7rem;
+  padding: 0.5rem 0.8rem;
   cursor: pointer;
   outline: none;
-  border: none;
   background-color: transparent;
   color: #f2f2f2;
-  font-size: 1.1rem;
+  font-size: 1rem;
   opacity: 1;
+  border: none;
   transition: padding 0.2s, font-size 0.2s, opacity 0.25s;
 }
 
+.navbarButton.create {
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+}
+
+.navbarButton.create {
+  padding: 0.5rem 0.9rem;
+}
+
 .navbarButton:hover {
-  padding: 0.5rem 0.8rem;
   font-size: 1.15rem;
 }
 
