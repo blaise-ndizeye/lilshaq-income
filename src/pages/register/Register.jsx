@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import { Link, useNavigate } from "react-router-dom"
 
 import CustomButton from "../../components/button/CustomButton"
 import CustomForm from "../../components/form/CustomForm"
@@ -7,6 +8,7 @@ import Welcome from "../../components/welcome/Welcome"
 import "./register.css"
 
 export default function Register(props) {
+  const navigate = useNavigate()
   const [state, setState] = useState({
     username: "",
     email: "",
@@ -26,23 +28,51 @@ export default function Register(props) {
   const handleSubmit = (e) => {
     e.preventDefault()
 
+    const userExist = JSON.parse(localStorage.getItem("user"))
+    if (userExist)
+      return setState((prev) => ({
+        ...prev,
+        error: "Only one user is allowed in the browser, please login",
+      }))
+
     if (state.username.length < 3)
-      setState((prev) => ({
+      return setState((prev) => ({
         ...prev,
         error: "Username  must have at least 3 characters",
       }))
 
     if (state.phone.length < 7)
-      setState((prev) => ({ ...prev, error: "Phone number must be valid" }))
+      return setState((prev) => ({
+        ...prev,
+        error: "Phone number must be valid",
+      }))
 
     if (state.password.length < 6)
-      setState((prev) => ({
+      return setState((prev) => ({
         ...prev,
         error: "Password must have at least 6 characters",
       }))
 
     if (state.password !== state.confirmPassword)
-      setState((prev) => ({ ...prev, error: "Passwords must match" }))
+      return setState((prev) => ({ ...prev, error: "Passwords must match" }))
+
+    let userData = {
+      username: state.username,
+      email: state.email,
+      phone: state.phone,
+      password: state.password,
+      isLoggedIn: true,
+    }
+
+    localStorage.setItem(
+      "user",
+      JSON.stringify({
+        ...userData,
+      })
+    )
+
+    props?.setIsAuthorized(true)
+    navigate("/")
 
     setState({
       username: "",
@@ -56,6 +86,13 @@ export default function Register(props) {
 
   useEffect(() => {
     document.title = "Register | LilshaQ Income"
+
+    return () => {
+      setState((prev) => ({
+        ...prev,
+        error: "",
+      }))
+    }
   }, [])
 
   return (
@@ -102,6 +139,9 @@ export default function Register(props) {
               onChange={handleChange}
             />
             <CustomButton type="submit">Submit</CustomButton>
+            <p className="help-link">
+              Already have an account? <Link to={"/login"}>Login</Link>
+            </p>
           </form>
         </CustomForm>
       </div>

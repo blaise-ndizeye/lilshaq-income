@@ -17,3 +17,9 @@
   font-size: clamp(0.7rem, 0.7rem + 0.3vw, 1.2rem);
   width: 100%;
 }
+
+.help-link {
+  font-size: clamp(0.7rem, 0.7rem + 0.3vw, 1.2rem);
+  color: rgb(0, 4, 27);
+  margin-top: 0.8rem;
+}

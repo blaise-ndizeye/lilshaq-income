@@ -8,24 +8,48 @@ import Login from "./pages/login/Login"
 import Register from "./pages/register/Register"
 
 function App() {
-  const [isAuthorized, setIsAuthorized] = useState(true)
+  const [isAuthorized, setIsAuthorized] = useState(false)
+  const user = JSON.parse(localStorage.getItem("user"))
   const navigate = useNavigate()
 
   const getUser = () => {
-    const user = localStorage.getItem("user")
-    if (!user) {
+    if (!user || !user?.isLoggedIn) {
       setIsAuthorized(false)
+      navigate("/login")
+    } else {
+      setIsAuthorized(true)
+      navigate("/")
     }
+  }
+
+  const logoutHandler = () => {
+    if (!user || !user?.isLoggedIn) return
+
+    localStorage.removeItem("user")
+    localStorage.setItem(
+      "user",
+      JSON.stringify({
+        ...user,
+        isLoggedIn: false,
+      })
+    )
+    setIsAuthorized(false)
+    navigate("/login")
   }
 
   useEffect(() => {
     getUser()
+    document.title = "Dashboard | LilshaQ Income"
+
+    return () => {
+      getUser()
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAuthorized])
 
   return (
     <>
-      <Navbar isAuthorized={isAuthorized} />
+      <Navbar isAuthorized={isAuthorized} logout={logoutHandler} />
       <Routes>
         <Route path="/*" element={<Dashboard />} />
         <Route
