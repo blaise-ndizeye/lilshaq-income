@@ -61,7 +61,7 @@ export default function Register(props) {
   return (
     <>
       <Welcome />
-      <div className="register">
+      <div className="action-wrapper">
         <CustomForm title="Create Account">
           <form onSubmit={handleSubmit}>
             {state.error.length !== 0 && (
