@@ -1,0 +1,13 @@
+.title {
+  margin-bottom: 2rem;
+  max-width: 520px;
+  text-align: center;
+  font-size: clamp(0.7rem, 0.7rem + 0.35vw, 1rem);
+  font-weight: 100;
+  background-color: rgb(1, 35, 66);
+  color: #f4f4f4;
+  padding: clamp(1rem, 1rem + 0.2vw, 2rem);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  line-height: 2rem;
+}

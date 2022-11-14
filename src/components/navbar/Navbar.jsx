@@ -1,7 +1,16 @@
 import React from "react"
+import { useNavigate, useLocation } from "react-router-dom"
+
 import "./navbar.css"
 
-const Navbar = () => {
+const Navbar = (props) => {
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  React.useEffect(() => {
+    console.log(location)
+  }, [location])
+
   return (
     <nav className="navbar">
       <div className="navbarContainer">

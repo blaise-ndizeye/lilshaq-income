@@ -1,0 +1,19 @@
+.register {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  flex-direction: column;
+  padding-bottom: 5rem;
+}
+
+.form-error {
+  background-color: rgb(243, 114, 114);
+  padding: 0.7rem 0.4rem;
+  margin: 1rem 0px;
+  color: white;
+  border-radius: 2px;
+  text-align: center;
+  font-size: clamp(0.7rem, 0.7rem + 0.3vw, 1.2rem);
+  width: 100%;
+}
