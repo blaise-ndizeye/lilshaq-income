@@ -1,11 +1,9 @@
 import React from "react"
 
-const Hotel = () => {
+export default function Register() {
   return (
     <div>
-      <p>Hotel</p>
+      <p>Register</p>
     </div>
   )
 }
-
-export default Hotel

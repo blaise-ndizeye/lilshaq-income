@@ -1,17 +1,19 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom"
-import Home from "./pages/home/Home"
-import Hotel from "./pages/hotel/Hotel"
-import Hotels from "./pages/hotels/Hotels"
+import { Routes, Route } from "react-router-dom"
+import Navbar from "./components/navbar/Navbar"
+import Dashboard from "./pages/dashboard/Dashboard"
+import Login from "./pages/login/Login"
+import Register from "./pages/register/Register"
 
 function App() {
   return (
-    <BrowserRouter>
+    <>
+      <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/hotels" element={<Hotels />} />
-        <Route path="/hotels/:hotel_id" element={<Hotel />} />
+        <Route path="/*" element={<Dashboard />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
-    </BrowserRouter>
+    </>
   )
 }
 
