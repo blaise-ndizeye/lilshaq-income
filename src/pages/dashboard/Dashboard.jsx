@@ -33,34 +33,39 @@ export default function Dashboard(props) {
   }, [])
 
   return (
-    <div className="view">
-      <div className="dashboard-status">
-        <h3>Welcome {props?.user?.username}</h3>
-        <p className="dashboard-income">
-          You have earned{" "}
-          <span
-            style={{
-              fontWeight: 700,
-              backgroundColor: "rgb(25, 161, 25)",
-              color: "white",
-              padding: "0.5rem",
-              borderRadius: "10px",
-            }}
-          >
-            <FontAwesomeIcon icon={faNairaSign} /> {income}
-          </span>
-        </p>
-        <p className="dashboard-helper">
-          All you need to do is to like
-          <FontAwesomeIcon icon={faHeartCircleCheck} /> the below contents to
-          increase your income
-        </p>
+    <>
+      <div className="view">
+        <div
+          className="dashboard-status"
+          onClick={() => alert("No payment integrated yet")}
+        >
+          <h3>Welcome {props?.user?.username}</h3>
+          <p className="dashboard-income">
+            You have earned{" "}
+            <span
+              style={{
+                fontWeight: 700,
+                backgroundColor: "rgb(25, 161, 25)",
+                color: "white",
+                padding: "0.5rem",
+                borderRadius: "10px",
+              }}
+            >
+              <FontAwesomeIcon icon={faNairaSign} /> {income}
+            </span>
+          </p>
+          <p className="dashboard-helper">
+            All you need to do is to like
+            <FontAwesomeIcon icon={faHeartCircleCheck} /> the below contents to
+            increase your income
+          </p>
+        </div>
+        {location.pathname === "/account" ? (
+          <Account user={props?.user} />
+        ) : (
+          <Articles />
+        )}
       </div>
-      {location.pathname === "/account" ? (
-        <Account user={props?.user} />
-      ) : (
-        <Articles />
-      )}
-    </div>
+    </>
   )
 }
