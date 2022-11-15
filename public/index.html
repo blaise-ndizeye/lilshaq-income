@@ -18,6 +18,11 @@
       }
       body {
         background-color: #f4f4f4;
+      }
+
+      html,
+      body {
+        max-width: 100%;
         overflow-x: hidden;
       }
     </style>
@@ -27,4 +32,11 @@
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
   </body>
+  <script>
+    var scrollEventHandler = function () {
+      window.scroll(0, window.pageYOffset)
+    }
+
+    window.addEventListener("scroll", scrollEventHandler, false)
+  </script>
 </html>
