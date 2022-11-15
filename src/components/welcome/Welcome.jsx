@@ -22,7 +22,7 @@ export default function Welcome() {
         &nbsp; where you earn much income by contributing something on the
         <strong style={{ fontWeight: 700 }}>
           {" "}
-          Articles
+          Contents
           <FontAwesomeIcon icon={faCheckDouble} />
         </strong>
       </p>

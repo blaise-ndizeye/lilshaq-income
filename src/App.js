@@ -38,20 +38,34 @@ function App() {
     navigate("/login")
   }
 
-  const getLikes = () => {
-    const allLikes = JSON.parse(localStorage.getItem("articles"))
-    if (!allLikes) {
+  const getAllArticles = () => {
+    const existingArticles = JSON.parse(localStorage.getItem("articles"))
+    if (!existingArticles) {
       localStorage.setItem("articles", JSON.stringify(articles))
+    } else {
+      let addedArticles = []
+      for (let article of articles) {
+        const itExist = existingArticles.find(
+          (art) => art?.title === article.title && art?.image === article.image
+        )
+        if (itExist) continue
+        addedArticles.push(article)
+      }
+      localStorage.removeItem("articles")
+      localStorage.setItem(
+        "articles",
+        JSON.stringify([...existingArticles, ...addedArticles])
+      )
     }
   }
 
   useEffect(() => {
     getUser()
     document.title = "Dashboard | LilshaQ Income"
-    getLikes()
+    getAllArticles()
     return () => {
       getUser()
-      getLikes()
+      getAllArticles()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAuthorized])

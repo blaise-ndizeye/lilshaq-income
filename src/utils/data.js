@@ -20,7 +20,7 @@ const articles = [
   {
     nLikes: 57,
     image: "/images/4.jpg",
-    title: "2000 H Bedrooms",
+    title: "2000 H Pools",
     liked: false,
   },
   {
@@ -39,6 +39,24 @@ const articles = [
     nLikes: 600,
     image: "/images/7.jpg",
     title: "Mariot KG Classic",
+    liked: false,
+  },
+  {
+    nLikes: 423,
+    image: "/images/8.jpg",
+    title: "Muhazi Mill H200",
+    liked: false,
+  },
+  {
+    nLikes: 377,
+    image: "/images/9.jpg",
+    title: "@Mille Collinez",
+    liked: false,
+  },
+  {
+    nLikes: 77,
+    image: "/images/10.jpg",
+    title: "Kezem Goffa",
     liked: false,
   },
 ]
