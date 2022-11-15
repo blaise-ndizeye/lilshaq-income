@@ -15,6 +15,7 @@ export default function Login(props) {
     password: "",
     error: "",
   })
+  const user = JSON.parse(localStorage.getItem("user"))
 
   const handleChange = (e) => {
     setState((prev) => ({
@@ -25,8 +26,6 @@ export default function Login(props) {
 
   const submitHandler = (e) => {
     e.preventDefault()
-
-    const user = JSON.parse(localStorage.getItem("user"))
 
     if (!user)
       return setState((prev) => ({
@@ -68,6 +67,10 @@ export default function Login(props) {
 
   useEffect(() => {
     document.title = "Login | LilshaQ Income"
+    if (user && user?.isLoggedIn) {
+      navigate("/")
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (

@@ -6,6 +6,7 @@ import Navbar from "./components/navbar/Navbar"
 import Dashboard from "./pages/dashboard/Dashboard"
 import Login from "./pages/login/Login"
 import Register from "./pages/register/Register"
+import { articles } from "./utils/data"
 
 function App() {
   const [isAuthorized, setIsAuthorized] = useState(false)
@@ -37,12 +38,20 @@ function App() {
     navigate("/login")
   }
 
+  const getLikes = () => {
+    const allLikes = JSON.parse(localStorage.getItem("articles"))
+    if (!allLikes) {
+      localStorage.setItem("articles", JSON.stringify(articles))
+    }
+  }
+
   useEffect(() => {
     getUser()
     document.title = "Dashboard | LilshaQ Income"
-
+    getLikes()
     return () => {
       getUser()
+      getLikes()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAuthorized])

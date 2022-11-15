@@ -17,6 +17,7 @@ export default function Register(props) {
     confirmPassword: "",
     error: "",
   })
+  const userExist = JSON.parse(localStorage.getItem("user"))
 
   const handleChange = (e) => {
     setState((prev) => ({
@@ -28,7 +29,6 @@ export default function Register(props) {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    const userExist = JSON.parse(localStorage.getItem("user"))
     if (userExist)
       return setState((prev) => ({
         ...prev,
@@ -87,12 +87,17 @@ export default function Register(props) {
   useEffect(() => {
     document.title = "Register | LilshaQ Income"
 
+    if (userExist && userExist?.isLoggedIn) {
+      navigate("/")
+    }
+
     return () => {
       setState((prev) => ({
         ...prev,
         error: "",
       }))
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
