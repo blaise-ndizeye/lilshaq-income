@@ -51,7 +51,7 @@ function App() {
     <>
       <Navbar isAuthorized={isAuthorized} logout={logoutHandler} />
       <Routes>
-        <Route path="/*" element={<Dashboard />} />
+        <Route path="/*" element={<Dashboard user={user} />} />
         <Route
           path="/login"
           element={

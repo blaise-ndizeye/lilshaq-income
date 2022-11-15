@@ -23,7 +23,16 @@ const Navbar = (props) => {
   return (
     <nav className="navbar">
       <div className="navbarContainer">
-        <h1 className="navLogo">LilshaQ Income</h1>
+        <h1
+          className="navLogo"
+          onClick={() =>
+            location.pathname !== "/login" && location.pathname !== "/register"
+              ? navigate("/")
+              : ""
+          }
+        >
+          LilshaQ Income
+        </h1>
         <div className="navbarLinks">
           {!props?.isAuthorized ? (
             unauthorizedLinks.map((link, index) => (
@@ -36,12 +45,24 @@ const Navbar = (props) => {
               </button>
             ))
           ) : (
-            <button
-              className="navbarButton active"
-              onClick={() => props?.logout()}
-            >
-              Logout
-            </button>
+            <>
+              <button
+                className={
+                  location.pathname === "/account"
+                    ? "navbarButton active"
+                    : "navbarButton"
+                }
+                onClick={() => navigate("/account")}
+              >
+                Account
+              </button>
+              <button
+                className="navbarButton active"
+                onClick={() => props?.logout()}
+              >
+                Logout
+              </button>
+            </>
           )}
         </div>
       </div>
