@@ -54,6 +54,7 @@ export default function ArticleCard(props) {
         src={currentArticle?.image}
         alt="article"
         className="article-image"
+        loading="lazy"
       />
       <div className="article-actions">
         <div className="article-title-container">
